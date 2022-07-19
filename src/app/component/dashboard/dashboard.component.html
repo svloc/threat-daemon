@@ -1,0 +1,118 @@
+<div>
+  <!-- header start -->
+  <div>
+    <div class="sidebar-header d-flex justify-content-between align-items-center w-100"  style=" position: fixed;z-index: 100;">
+    <ul class="list-sidebar list-unstyled">
+        <li>
+            <a *ngIf="toggle" class="cursor-pointer nav-link d-flex justify-content-end align-items-center"
+                (click)="toggleMenu()">
+                <i class="fa fa-angle-double-left"></i>
+            </a>
+
+            <a *ngIf="!toggle" class="cursor-pointer nav-link d-flex justify-content-end align-items-center"
+                (click)="toggleMenu()">
+                <i class="fa fa-angle-double-right"></i>
+            </a>
+        </li>
+    </ul>
+
+    <div class="t-dropdown position-relative">
+        <div class="cursor-pointer">Text</div>
+        <div class="dropdown-content position-absolute" style="left: 0;">
+            <a routerLink="/layout">Item 1</a>
+            <a routerLink="/layout">Item 2</a>
+            <a routerLink="/layout">Item 3</a>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between align-items-center" style="width: 100px;">
+        <i class="fa fa-bell" aria-hidden="true"></i>
+        <div class="t-dropdown float-right ml-0 position-relative">
+            <div class="mb-0 mr-3">
+                <span class="user">A</span>
+                <span class="text-dropdown "></span>
+            </div>
+            <div class="dropdown-content position-absolute" style="right:0;">
+                <a class="text-link" (click)="logout()">Logout</a>
+                <a class="text-link" (click)="userProfileClick()">User Profile</a>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
+  <!-- header end -->
+
+  <!-- sidebar start -->
+  <div class="d-flex">
+    <div [ngStyle]="{'width': toggle ?  '220px':'45px'}">
+
+    <div class="d-flex">
+      <div [ngClass]="toggle ? 'sidebar left' : 'sidebar fliph left'" style="position: fixed;top: 53px;">
+        <ul class="list-sidebar bg-default list-unstyled">
+          <li>
+            <a routerLink="/dashboard/reference-doc" class="collapsed active nav-link">
+                  <i class="fa fa-th-large"></i>
+                  <span class="nav-label"> Reference Docs</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/layout" class="nav-link">
+              <i class="fa fa-book"></i>
+              <span class="nav-label">Architecture</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/dashboard/create-edit-threats" class="nav-link">
+              <i class="fa fa-book"></i>
+              <span class="nav-label">Threats</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/dashboard/create-edit-vulnerability" class="nav-link">
+              <i class="fa fa-user"></i>
+              <span class="nav-label">Vulnerabilities</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/dashboard/create-edit-risk" class="nav-link">
+              <i class="fa fa-home"></i>
+              <span class="nav-label">Risks Calculation </span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/dashboard/create-edit-threats" class="nav-link">
+                <i class="fa fa-credit-card-alt"></i>
+                <span class="nav-label">Traceability Matrix </span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/dashboard/create-edit-counter-measure"class="nav-link">
+                <i class="fa fa-file-text"></i>
+                <span class="nav-label">Mitigations & Countermeasures</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/layout" class="nav-link">
+                <i class="fa fa-file-video-o"></i>
+                <span class="nav-label">Help </span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+   </div>
+    </div>
+   <!-- sidebar end -->
+  <div [ngStyle]="{'width': toggle ?  '80%':'90%'}" style="border:1px solid; top: 54px;position: relative;" class="m-auto">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
+</div>

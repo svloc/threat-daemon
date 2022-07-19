@@ -1,0 +1,141 @@
+<div class="threat-form-container">
+
+  <div class="float-right mr-3 mt-3 cursor-pointer" (click)="onCloseClick()"><i class="fa fa-close"></i></div>
+  <form [formGroup]="threatForm" (ngSubmit)="onSubmit()">
+
+      <div class="text-center pt-5">
+          <h3>Add Threat</h3>
+      </div>
+      <div class="b-b mb-5"></div>
+      <div class="container">
+          <div class="mt-2 row">
+              <div class="col-2">
+                  <label class="form-label">vul id</label>
+              </div>
+              <div class="col-10">
+                  <input type="text" formControlName="threat_id" placeholder='vulnerabilities id' class="form-control" />
+              </div>
+          </div>
+          <div class="mt-2 row">
+              <div class="col-2">
+                  <label class="form-label">Creater Name</label>
+              </div>
+              <div class="col-10">
+                  <input type="text" formControlName="creator_name" placeholder='Creater Name' class="form-control" />
+              </div>
+          </div>
+
+          <div class="mt-2 row">
+              <div class="col-2">
+                  <label class="form-label">Owner name</label>
+              </div>
+              <div class="col-10">
+                  <input type="text" formControlName="owner_name" placeholder='Owner name' class="form-control" />
+              </div>
+          </div>
+
+          <div class="mt-2 row">
+              <div class="col-2">
+                  <label class="form-label">Select component</label>
+              </div>
+              <div class="col-10">
+                  <select class="form-select" aria-label="Select component" formControlName="component_name">
+                      <option selected>Select component</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                  </select>
+              </div>
+          </div>
+
+          <div class="mt-2 row">
+              <div class="col-2">
+                  <label class="form-label">Threat type</label>
+              </div>
+              <div class="col-10">
+                  <select class="form-select" aria-label="Select type" formControlName="threat_type">
+                      <option selected>Select threat type</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                  </select>
+              </div>
+          </div>
+          <div class="row mt-2">
+              <mat-form-field class="example-chip-list" appearance="fill">
+                  <mat-label>Use case</mat-label>
+                  <mat-chip-list #chipList aria-label="Use case selection">
+                    <mat-chip
+                      *ngFor="let fruit of fruits"
+                      (removed)="remove(fruit)">
+                      {{fruit}}
+                      <button matChipRemove>
+                        <mat-icon>cancel</mat-icon>
+                      </button>
+                    </mat-chip>
+                    <input
+                      placeholder="New use case..."
+                      formControlName="use_case"
+                      #fruitInput
+                      [formControl]="fruitCtrl"
+                      [matAutocomplete]="auto"
+                      [matChipInputFor]="chipList"
+                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                      (matChipInputTokenEnd)="add($event)">
+                  </mat-chip-list>
+                  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                    <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                      {{fruit}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+
+          </div>
+
+
+          <div class="mt-5 row">
+              <div class="col-2">
+                  <label class="form-label">Threat desc</label>
+              </div>
+              <div class="col-10">
+              <textarea type="text" class='form-control' placeholder='Threat Description' rows="4"
+                  formControlName="threat_desc">
+                  </textarea>
+                  </div>
+          </div>
+
+          <div class="mt-2 row">
+              <div class="col-2">
+                  <label class="form-label">Threat type</label>
+              </div>
+              <div class="col-10">
+                  <input type="text" formControlName="threat_status" placeholder='Threat status' class="form-control" />
+              </div>
+          </div>
+
+          <div class="mt-2 row">
+              <div class="col-2">
+                  <label class="form-label">Liklihood</label>
+              </div>
+              <div class="col-10">
+                  <input type="text" formControlName="liklihood" placeholder='Liklihood' class="form-control" />
+              </div>
+          </div>
+
+          <div class="mt-2 row">
+              <div class="col-2">
+                  <label class="form-label">Comments</label>
+              </div>
+              <div class="col-10">
+                  <input type="text" formControlName="val_comments" placeholder='Comments' class="form-control" />
+              </div>
+          </div>
+
+
+          <div class='row mt-5 justify-content-center'>
+              <button type='button' (click)="onCloseClick()" class="cursor-pointer title-btn">Cancle</button>
+              <button type='submit' class="cursor-pointer title-btn">Add Threat</button>
+          </div>
+      </div>
+  </form>
+</div>
